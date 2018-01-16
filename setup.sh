@@ -1,35 +1,11 @@
 #!/bin/bash
 
-# icons
-readonly ARROW="→"
-readonly CHECK="✔"
-readonly CLOSE="✗"
-readonly HEART="♥"
+DIR=$(dirname $0)
 
-# colors
-readonly RESET="\e[0m"
-readonly RED="\e[0;31m"
-readonly GREEN_BOLD="\e[1;32m"
-readonly YELLOW_BOLD="\e[1;33m"
-readonly BLUE_BOLD="\e[1;34m"
+git clone git@github.com:iagodahlem/scripts.git &> /dev/null
+source $DIR/scripts/index.sh
 
-function log() {
-  printf "$1\n"
-}
-
-function bold() {
-  printf "${BLUE_BOLD}$1${RESET}\n"
-}
-
-function arrow() {
-  printf "${YELLOW_BOLD}${ARROW}${RESET} $1\n"
-}
-
-function check() {
-  printf "${GREEN_BOLD}${CHECK}${RESET} $1\n"
-}
-
-function banner() {
+banner() {
   log  ""
   bold "                _                 "
   bold "               | |                "
@@ -40,7 +16,7 @@ function banner() {
   bold "                         | |      "
   bold "                         |_|      "
   log  ""
-  log  "      Made by @iagodahlem with ${RED}$HEART${RESET}"
+  log  "      Made by @iagodahlem with $(heart)"
   log  ""
   log  "  -----------------------------------"
   log  ""
@@ -326,3 +302,6 @@ check "dotfiles installed"
 arrow "remove unnecessary packages"
 sudo apt-get autoremove -y
 check "packages removed"
+
+# clean up scripts
+rm -rf scripts
