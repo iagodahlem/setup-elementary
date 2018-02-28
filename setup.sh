@@ -283,6 +283,15 @@ done
 fc-cache -f > /dev/null
 check "firacode installed"
 
+# asdf
+arrow "asdf"
+git clone https://github.com/asdf-vm/asdf.git ~/.asdf --branch v0.4.2
+
+asdf plugin-add erlang https://github.com/asdf-vm/asdf-erlang.git
+asdf plugin-add elixir https://github.com/asdf-vm/asdf-elixir.git
+asdf plugin-add golang https://github.com/kennyp/asdf-golang.git
+check "asdf installed"
+
 # vm
 arrow "configure vm options"
 sudo tee -a /etc/sysctl.d/99-sysctl.conf <<-EOF
