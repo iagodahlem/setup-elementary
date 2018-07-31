@@ -270,6 +270,9 @@ git clone https://github.com/Nefelim4ag/Ananicy.git > /dev/null
 ./Ananicy/package.sh debian > /dev/null
 sudo dpkg -i ./Ananicy/ananicy-*.deb > /dev/null
 rm -rf Ananicy
+sudo apt-get install schedtool -y
+sudo systemctl enable ananicy
+sudo systemctl start ananicy
 check "ananicy installed"
 
 # firacode
